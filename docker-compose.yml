@@ -1,0 +1,21 @@
+version: "3"
+services:
+    db:
+        container_name: mongodb
+        image: mongo
+        volumes:
+            - .:/server/data/db
+        ports:
+            - "27017:27017"
+    server:
+        build: ./server
+        container_name: "unbored"
+        image: "node"
+        volumes:
+            - ./server:/server
+            - /server/node_modules
+            - data-volume:/var/lib/shared
+        ports:
+            - 8888:8888
+volumes:
+    data-volume:
