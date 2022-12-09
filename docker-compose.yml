@@ -1,22 +1,25 @@
 version: "3"
 services:
-    db:
+    mongo:
         container_name: mongodb
         image: mongo
+        restart: always
+        ports: 
+            - 27017:27017
         volumes:
-            - .:/server/data/db
-        ports:
-            - "27017:27017"
+            - mongodb:/data/db
         command: mongod --quiet --logpath /dev/null 
     server:
         build: ./server
-        container_name: "unbored"
-        image: "node"
-        volumes:
-            - ./server:/server
-            - /server/node_modules
-            - data-volume:/var/lib/shared
+        container_name: server
         ports:
             - 8888:8888
+        volumes:
+            - ./server:/usr/src/app/server
+            - /usr/src/app/server/node_modules
+            - data-volume:/var/lib/shared
+        links:
+            - mongo
 volumes:
+    mongodb:
     data-volume:

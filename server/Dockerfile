@@ -1,8 +1,7 @@
-FROM node
-WORKDIR /server/
-COPY package*.json /server/
+FROM node:19.2.0-alpine
+WORKDIR /usr/app/server
+COPY package*.json .
 RUN npm install
-COPY . /server/
+COPY . .
 EXPOSE 8888
-# RUN npm run start.dev
-CMD ["npm", "run", "start.dev"]
+CMD ["npm", "start"]
