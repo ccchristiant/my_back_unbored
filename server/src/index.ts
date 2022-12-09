@@ -12,7 +12,7 @@ app.use(bodyparser.urlencoded({extended: true}))
 app.use(auth)
 
 mongoose.set('strictQuery', true);
-mongoose.connect("mongodb://db:27017/pipi", {useNewUrlParser: true,useUnifiedTopology: true} as ConnectOptions)
+mongoose.connect("mongodb://db:27017/unbored", {useNewUrlParser: true,useUnifiedTopology: true} as ConnectOptions)
 .then(() => {
     console.log("connected to database");
 })
