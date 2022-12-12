@@ -1,6 +1,6 @@
 import express from "express";
 import mongoose, { ConnectOptions }  from "mongoose";
-import { auth } from "./routes/auth";
+import { auth } from "./routes/Auth";
 import bodyparser from "body-parser"
 
 const app = express();
