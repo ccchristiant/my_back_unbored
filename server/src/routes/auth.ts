@@ -1,5 +1,5 @@
 import express from "express";
-import { User } from "../../models/users";
+import { User } from "../../mongo/user";
 import bcrypt from "bcryptjs";
 
 const router = express.Router();
