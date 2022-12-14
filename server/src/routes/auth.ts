@@ -29,9 +29,9 @@ router.post('/login/', async (req, res) => {
         } else {
             res.status(501).send("Bad email or password");
         }
-    } catch (error) {
-        res.status(501).send("Failed");
+    } catch (err: any) {
+        res.status(501).send(err.message);
     }
 })
 
-export {router as auth}
+export { router as Auth }

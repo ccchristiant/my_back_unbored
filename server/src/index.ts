@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose, { ConnectOptions }  from "mongoose";
-import { auth } from "./routes/Auth";
+import { Auth } from "./routes/Auth";
+import { Event } from "./routes/Event";
 import bodyparser from "body-parser"
 
 const app = express();
@@ -9,7 +10,8 @@ const port = 8888;
 app.use(bodyparser.json())
 app.use(bodyparser.urlencoded({extended: true}))
 
-app.use(auth)
+app.use(Auth);
+app.use(Event);
 
 mongoose.set('strictQuery', true);
 mongoose.connect("mongodb://db:27017/unbored", {useNewUrlParser: true,useUnifiedTopology: true} as ConnectOptions)
