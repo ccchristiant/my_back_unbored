@@ -7,7 +7,7 @@ export async function AuthMiddleware(req: express.Request, res: express.Response
         return next(new createError.Unauthorized('Access token is required'))
     }
     const bearer = req.headers.authorization.split(' ');
-    const bearerToken = bearer[1];
+    const bearerToken = ((bearer[1] === undefined) ? bearer[0] : bearer[1]);  
     if (!bearerToken) {
         return next(new createError.Unauthorized('Access token is required'))
     }
