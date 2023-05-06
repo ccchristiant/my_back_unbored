@@ -5,7 +5,7 @@ import { AuthModule } from './Auth/auth.module';
 import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
-  imports: [AuthModule, MongooseModule.forRoot('mongodb://db:27017/unbored')],
+  imports: [AuthModule, MongooseModule.forRoot('mongodb://mongodb:27017/unbored')],
   controllers: [AppController],
   providers: [AppService],
 })
