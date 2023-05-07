@@ -9,8 +9,7 @@ services:
       - '27017:27017'
     volumes:
       - mongodb:/data/db
-    env_file:
-      - ./server/docker.env
+    command: mongod --quiet --logpath /dev/null
 
   # pgadmin:
     # image: dpage/pgadmin4:7.0
