@@ -16,6 +16,9 @@ export class User extends Document {
     email: string;
 
     @Prop()
+    password: string;
+
+    @Prop()
     gender: Gender;
 
     @Prop()

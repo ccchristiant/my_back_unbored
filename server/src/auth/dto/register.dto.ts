@@ -1,4 +1,4 @@
-import { IsEnum, IsNotEmpty, IsString, IsDate, IsEmail, IsArray } from "class-validator";
+import { IsEnum, IsNotEmpty, IsString, IsEmail, IsArray, IsDateString } from "class-validator";
 import { Gender } from "../schemas/user.schema";
 
 export class RegisterDto {
@@ -11,7 +11,7 @@ export class RegisterDto {
     readonly email: string;
 
     @IsNotEmpty()
-    @IsEnum(Gender, { message : "Please :'("})
+    @IsEnum(Gender, { message : "Please enter a correct gender"})
     readonly gender: Gender;
 
     @IsNotEmpty()
@@ -19,7 +19,7 @@ export class RegisterDto {
     readonly password: string;
 
     @IsNotEmpty()
-    @IsDate()
+    @IsDateString()
     readonly birthdate: string;
 
     @IsArray()
