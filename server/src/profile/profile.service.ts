@@ -10,7 +10,13 @@ export class ProfileService {
         private userModel: Model<User>,
     ){}
     async profile(user : User) {
-        console.log(user);
-        return
+        const profileUser = {
+            "name" : user.name,
+            "email" : user.email,
+            "gender" : user.gender,
+            "birthdate": user.birthdate,
+            "preferences": user.preferences,
+        }
+        return profileUser;
     }
 }

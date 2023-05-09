@@ -20,7 +20,7 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
 
     async validate(payload : any) {
         const { id } = payload;
-        const user = await this.userModel.findById(id).select("-password").select("-__v").select("-email");
+        const user = await this.userModel.findById(id).select("-password").select("-__v");
         if (!user) {
             throw new UnauthorizedException('Login to acces to this endpoint.');
         }
