@@ -58,6 +58,6 @@ export class AuthService {
     }
 
     async refresh() {
-        return "hehe";
+        // const token = this.jwtService.sign({id: user._id});
     }
 }
