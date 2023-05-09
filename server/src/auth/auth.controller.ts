@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Header, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Headers, Body, Req, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
@@ -14,13 +14,13 @@ export class AuthController {
     }
 
     @Post('/login')
-    login(@Body() loginDto: LoginDto) : Promise<string> {
+    login(@Body() loginDto: LoginDto) : Promise<{token : string, refresh : string}> {
         return this.authService.login(loginDto);
     }
 
     @UseGuards(RefreshGuard)
     @Post('/refresh')
-    refresh() {
-        return this.authService.refresh();
+    refresh(@Req() req, @Headers() head) : Promise<{token: string, refresh : string}> {
+        return this.authService.refresh(req.user, head.refresh);
     }
 }
