@@ -9,14 +9,18 @@ export enum Gender {
 
 @Schema()
 export class User extends Document {
-    @Prop({unique: [ true, 'Duplicated name entered']})
-    name: string;
+
+    @Prop({unique: [ true, 'Duplicated username entered']})
+    username: string;
     
     @Prop({unique: [ true, 'Duplicated email entered']})
     email: string;
 
     @Prop()
     password: string;
+
+    @Prop({unique: [true, 'number already used']})
+    number: string;
 
     @Prop()
     gender: Gender;
@@ -26,6 +30,9 @@ export class User extends Document {
 
     @Prop()
     preferences: string[];
+
+    @Prop()
+    reservations: string[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

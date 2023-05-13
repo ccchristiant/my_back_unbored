@@ -1,28 +1,28 @@
-import { IsEnum, IsNotEmpty, IsString, IsEmail, IsArray, IsDateString } from "class-validator";
-import { Gender } from "../schemas/user.schema";
+import { IsEnum, IsNotEmpty, IsString, IsEmail, IsDateString, IsOptional } from "class-validator";
+import { Gender } from "../../auth/schemas/user.schema";
 
-export class RegisterDto {
-    @IsNotEmpty()
+export class UpdateDto {
+    @IsOptional()
     @IsString()
     readonly username: string;
 
-    @IsNotEmpty()
+    @IsOptional()
     @IsEmail({}, { message: "Please enter a correct email"})
     readonly email: string;
 
-    @IsNotEmpty()
+    @IsOptional()
     @IsEnum(Gender, { message : "Please enter a correct gender"})
     readonly gender: Gender;
 
-    @IsNotEmpty()
+    @IsOptional()
     @IsString()
     readonly number: string;
 
-    @IsNotEmpty()
+    @IsOptional()
     @IsString()
     readonly password: string;
 
-    @IsNotEmpty()
+    @IsOptional()
     @IsDateString()
     readonly birthdate: string;
 }

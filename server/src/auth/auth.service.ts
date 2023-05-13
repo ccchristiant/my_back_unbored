@@ -16,21 +16,17 @@ export class AuthService {
         private jwtService: JwtService
     ) {}
     async register(registerDto: RegisterDto) : Promise<string> {
-        const { name, email, password, gender, birthdate, preferences } = registerDto
+        const { username, email, password, gender, number, birthdate } = registerDto
         const hash = await bcrypt.hash(password, 10)
-        let token = null;
         try {
             const user = await this.userModel.create({
-                name,
+                username,
                 email,
                 gender,
                 birthdate,
-                preferences,
+                number,
                 password: hash,
             })
-            token = this.jwtService.sign({id: user._id});
-
-            console.log(token);
         } catch(error) {
             if (error.code === 11000) {
                 throw new ConflictException("Duplicated key")
