@@ -4,7 +4,6 @@ import { ProfileService } from './profile.service';
 import { getModelToken } from '@nestjs/mongoose';
 import { Gender, User, UserSchema } from "../auth/schemas/user.schema";
 import { JwtGuard } from '../auth/guards/jwt-auth.guard';
-import { UpdateDto } from './dto/update.dto';
 
 describe('ProfileController', () => {
   let controller: ProfileController;

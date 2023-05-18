@@ -19,5 +19,4 @@ export class ProfileController {
     async update(@Req() req, @Body() updateUser : UpdateDto) {
         return this.profileService.UpdateUser(req.user.id, updateUser);
     }
-
 }
