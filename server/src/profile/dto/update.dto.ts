@@ -11,6 +11,9 @@ export class UpdateDto {
     readonly email: string;
 
     @IsOptional()
+    readonly role: string;
+
+    @IsOptional()
     @IsEnum(Gender, { message : "Please enter a correct gender"})
     readonly gender: Gender;
 

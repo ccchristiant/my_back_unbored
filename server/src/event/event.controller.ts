@@ -1,4 +1,4 @@
-import { Controller, UseGuards, Post, Req, Body, Get, Delete } from '@nestjs/common';
+import { Controller, UseGuards, Post, Req, Body, Get, Delete, Query } from '@nestjs/common';
 import { JwtGuard } from 'src/auth/guards/jwt-auth.guard';
 import { AddEventDto } from './dto/AddEvent.dto';
 import { DeleteEventDto } from './dto/RemoveEvent.dto';
@@ -25,4 +25,16 @@ export class EventController {
     async deleteEvent(@Req() req, @Body() deleteEventDto : DeleteEventDto) {
         return this.eventService.removeEvent(req.user.id, deleteEventDto);
     }
+
+    @UseGuards(JwtGuard)
+    @Get('/show')
+    async showDetails(@Query('id') id) {
+        return this.eventService.getEventById(id);
+    }
+
+    // @UseGuards(JwtGuard)
+    // @Post('/addUnboredEvent')
+    // async addUnboredEvent() {
+    //     return null;
+    // }
 }

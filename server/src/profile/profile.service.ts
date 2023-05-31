@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import { User } from "../auth/schemas/user.schema";
@@ -25,6 +25,9 @@ export class ProfileService {
     }
 
     async UpdateUser(id: string, updateUser : UpdateDto) {
+        if (updateUser.role) {
+            throw new UnauthorizedException('Role is cannot be modifiyed')
+        }
         const updatedUser = await this.userModel.findByIdAndUpdate(id, updateUser, {new: true});
         if (!updatedUser) {
             throw new NotFoundException('User not found');

@@ -7,6 +7,11 @@ export enum Gender {
     AUTRE = "Autre",
 }
 
+export enum Role {
+    USER = "User",
+    EVENTADDER = "EventAdder",
+}
+
 @Schema()
 export class User extends Document {
 
@@ -18,6 +23,9 @@ export class User extends Document {
 
     @Prop()
     password: string;
+
+    @Prop()
+    role: string;
 
     @Prop({unique: [true, 'number already used']})
     number: string;
