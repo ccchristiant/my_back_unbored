@@ -27,6 +27,14 @@ export class AuthService {
                 number,
                 password: hash,
                 preferences: preferences,
+                actualB: "0",
+                actualH: "0",
+                actualP: "0",
+                actualS: "0",
+                body: "0",
+                shoes: "0",
+                pants: "0",
+                head: "0",
             })
         } catch(error) {
             if (error.code === 11000) {

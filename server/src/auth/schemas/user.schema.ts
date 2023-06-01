@@ -41,6 +41,30 @@ export class User extends Document {
 
     @Prop()
     reservations: string[];
+
+    @Prop()
+    actualH: string;
+
+    @Prop()
+    actualB: string;
+
+    @Prop()
+    actualP: string;
+
+    @Prop()
+    actualS: string;
+
+    @Prop()
+    head: string[];
+
+    @Prop()
+    body: string[];
+
+    @Prop()
+    pants: string[];
+
+    @Prop()
+    shoes: string[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
