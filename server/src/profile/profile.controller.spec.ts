@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { ProfileController } from './profile.controller';
 import { ProfileService } from './profile.service';
 import { getModelToken } from '@nestjs/mongoose';
-import { Gender, User, UserSchema } from "../auth/schemas/user.schema";
+import { Gender, User, UserSchema } from '../auth/schemas/user.schema';
 import { JwtGuard } from '../auth/guards/jwt-auth.guard';
 
 describe('ProfileController', () => {
@@ -13,7 +13,10 @@ describe('ProfileController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [ProfileController],
-      providers: [ProfileService, {provide: getModelToken(User.name), useValue: {}}]
+      providers: [
+        ProfileService,
+        { provide: getModelToken(User.name), useValue: {} },
+      ],
     }).compile();
 
     controller = module.get<ProfileController>(ProfileController);
@@ -31,18 +34,17 @@ describe('ProfileController', () => {
       birthdate: new Date('2002-05-05'),
       preferences: [],
       reservations: [],
-    }
+    };
     it('should return user profile', async () => {
-
       jest.spyOn(service, 'profile').mockResolvedValueOnce(mockUser);
       const req = {
         user: {
           id: '123',
-        }
-      }
+        },
+      };
       expect(await controller.profile(req)).toEqual(mockUser);
     });
-  })
+  });
   // describe('update', () => {
   //   it('should update the user profile', async () => {
   //     const user = {

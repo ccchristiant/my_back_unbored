@@ -8,22 +8,21 @@ import { UserSchema } from './schemas/user.schema';
 import { RefreshStrategy } from './strategies/refresh.strategy';
 
 @Module({
-    imports: [
-        PassportModule.register({defaultStrategy: 'jwt'}),
-        JwtModule.registerAsync({
-            useFactory: () => {
-                return {
-                    secret: "caca",
-                    signOptions: {
-                        expiresIn: "3d"
-                    },
-                };
-            }
-        }),
-        MongooseModule.forFeature([{name: 'User', schema: UserSchema}]),
-    ],
-    controllers: [AuthController],
-    providers: [AuthService, RefreshStrategy],
+  imports: [
+    PassportModule.register({ defaultStrategy: 'jwt' }),
+    JwtModule.registerAsync({
+      useFactory: () => {
+        return {
+          secret: 'caca',
+          signOptions: {
+            expiresIn: '3d',
+          },
+        };
+      },
+    }),
+    MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]),
+  ],
+  controllers: [AuthController],
+  providers: [AuthService, RefreshStrategy],
 })
-
 export class AuthModule {}
