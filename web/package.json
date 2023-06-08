@@ -21,6 +21,7 @@
     "format:verify": "prettier --list-different \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --fix",
     "lint:verify": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
+    "test:nowatch": "react-scripts test --watchAll=false",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

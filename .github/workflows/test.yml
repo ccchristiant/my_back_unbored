@@ -50,4 +50,4 @@ jobs:
 
       - name: Run tests
         working-directory: ./web
-        run: docker run $IMAGE_TAG_WEB sh -c 'npm run test'
+        run: docker run $IMAGE_TAG_WEB sh -c 'npm run test:nowatch'

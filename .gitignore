@@ -28,7 +28,7 @@ coverage
 *.sublime-workspace
 
 # IDE - VSCode
-.vscode/*
+/.vscode
 
 # Environment
 *.env
