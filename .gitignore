@@ -32,3 +32,10 @@ coverage
 
 # Environment
 *.env
+
+# dependencies
+.pnp
+.pnp.js
+
+# production
+build

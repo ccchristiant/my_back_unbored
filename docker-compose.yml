@@ -11,17 +11,6 @@ services:
       - mongodb:/data/db
     command: mongod --quiet --logpath /dev/null
 
-  # pgadmin:
-    # image: dpage/pgadmin4:7.0
-    # networks:
-      # - mongodb
-    # ports:
-      # - "8080:80"
-    # volumes:
-      # - pgadmin:/root/.pgadmin
-    # env_file:
-      # - ./server/docker.env
-
   server:
     build:
       context: ./server
@@ -38,10 +27,23 @@ services:
     env_file:
       - ./server/.env
 
+  web:
+    build:
+      context: ./web
+      target: install-dependencies
+    command: npm run start
+    ports:
+      - '4000:4000'
+    volumes:
+      - ./web/src:/user/src/app/web/src
+    depends_on:
+      - server
+    env_file:
+      - ./web/.env
+
 networks:
   mongodb:
     driver: bridge
 
 volumes:
   mongodb:
-  pgadmin:
