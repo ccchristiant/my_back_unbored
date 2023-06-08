@@ -6,22 +6,21 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^29.5.0",
-    "@types/node": "^18.15.11",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.34",
     "@types/react": "^18.2.9",
     "@types/react-dom": "^18.2.4",
-    "@typescript-eslint/eslint-plugin": "^5.0.0",
-    "@typescript-eslint/parser": "^5.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1",
-    "typescript": "^4.7.4",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "format": "prettier --write \"src/**/*.tsx\"",
-    "format:verify": "prettier --check \"src/**/*.tsx\"",
-    "lint": "eslint \"{src,apps,libs}/**/*.tsx\" --fix",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
+    "format:verify": "prettier --list-different \"src/**/*.{js,jsx,ts,tsx}\"",
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --fix",
+    "lint:verify": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -46,10 +45,10 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^8.0.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "prettier": "^2.3.2",
+    "eslint": "^8.42.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.8",
     "react-test-renderer": "^18.2.0"
   }
 }
