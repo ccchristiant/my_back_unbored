@@ -37,7 +37,7 @@ RUN npm install -g npm@9.7.1
 RUN npm install -g serve
 
 COPY --from=install-dependencies /user/src/app/web/node_modules ./node_modules
-COPY --from=create-build /user/src/app/web/dist ./dist
+COPY --from=create-build /user/src/app/web/build ./build
 COPY package.json ./
 
 RUN npm prune --production
