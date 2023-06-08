@@ -8,7 +8,7 @@ RUN npm install -g npm@9.7.1
 
 COPY package*.json ./
 
-RUN npm ci
+RUN npm install
 
 COPY . .
 
