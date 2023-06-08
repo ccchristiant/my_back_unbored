@@ -8,7 +8,7 @@ import {
   Delete,
   Query,
 } from '@nestjs/common';
-import { JwtGuard } from 'src/auth/guards/jwt-auth.guard';
+import { JwtGuard } from '../auth/guards/jwt-auth.guard';
 import { AddEventDto } from './dto/AddEvent.dto';
 import { DeleteEventDto } from './dto/RemoveEvent.dto';
 import { EventService } from './event.service';
