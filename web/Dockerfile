@@ -2,7 +2,7 @@
 
 FROM node:18.16-alpine AS install-dependencies
 
-WORKDIR /user/src/app/server
+WORKDIR /user/src/app/web
 
 RUN npm install -g npm@9.7.1
 
@@ -16,11 +16,11 @@ COPY . .
 
 FROM node:18.16-alpine AS create-build
 
-WORKDIR /user/src/app/server
+WORKDIR /user/src/app/web
 
 RUN npm install -g npm@9.7.1
 
-COPY --from=install-dependencies /user/src/app/server ./
+COPY --from=install-dependencies /user/src/app/web ./
 
 RUN npm run build
 
@@ -30,16 +30,18 @@ USER node
 
 FROM node:18.16-alpine AS run
 
+WORKDIR /user/src/app/web
+
 RUN npm install -g npm@9.7.1
 
-WORKDIR /user/src/app/server
+RUN npm install -g serve
 
-COPY --from=install-dependencies /user/src/app/server/node_modules ./node_modules
-COPY --from=create-build /user/src/app/server/dist ./dist
+COPY --from=install-dependencies /user/src/app/web/node_modules ./node_modules
+COPY --from=create-build /user/src/app/web/build ./build
 COPY package.json ./
 
 RUN npm prune --production
 
-EXPOSE 3000
+EXPOSE 4000
 
-CMD ["npm", "run", "start:prod"]
+CMD ["serve" "-s" "build" "-l" "4000"]

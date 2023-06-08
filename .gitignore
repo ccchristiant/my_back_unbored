@@ -28,7 +28,14 @@ coverage
 *.sublime-workspace
 
 # IDE - VSCode
-.vscode/*
+/.vscode
 
 # Environment
 *.env
+
+# dependencies
+.pnp
+.pnp.js
+
+# production
+build
