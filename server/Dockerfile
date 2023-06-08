@@ -4,7 +4,7 @@ FROM node:18.16-alpine AS install-dependencies
 
 WORKDIR /user/src/app/server
 
-RUN npm install -g npm@9.6.6
+RUN npm install -g npm@9.7.1
 
 COPY package*.json ./
 
@@ -18,7 +18,7 @@ FROM node:18.16-alpine AS create-build
 
 WORKDIR /user/src/app/server
 
-RUN npm install -g npm@9.6.6
+RUN npm install -g npm@9.7.1
 
 COPY --from=install-dependencies /user/src/app/server ./
 
@@ -30,7 +30,7 @@ USER node
 
 FROM node:18.16-alpine AS run
 
-RUN npm install -g npm@9.6.6
+RUN npm install -g npm@9.7.1
 
 WORKDIR /user/src/app/server
 
