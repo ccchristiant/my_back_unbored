@@ -1,13 +1,43 @@
-FROM node:19.2.0-alpine
+# Installing dependencies:
 
-WORKDIR /usr/src/app/server
+FROM node:18.16-alpine AS install-dependencies
 
-COPY package*.json .
+WORKDIR /user/src/app/server
 
-RUN npm install
+RUN npm install -g npm@9.7.1
+
+COPY package*.json ./
+
+RUN npm ci
 
 COPY . .
 
-EXPOSE 8888
+# Creating a build:
 
-CMD ["npm", "start"]
+FROM node:18.16-alpine AS create-build
+
+WORKDIR /user/src/app/server
+
+RUN npm install -g npm@9.7.1
+
+COPY --from=install-dependencies /user/src/app/server ./
+
+RUN npm run build
+
+USER node
+
+# Running the application:
+
+FROM node:18.16-alpine AS run
+
+RUN npm install -g npm@9.7.1
+
+WORKDIR /user/src/app/server
+
+COPY --from=install-dependencies /user/src/app/server/node_modules ./node_modules
+COPY --from=create-build /user/src/app/server/dist ./dist
+COPY package.json ./
+
+RUN npm prune --production
+
+CMD ["npm", "run", "start:prod"]

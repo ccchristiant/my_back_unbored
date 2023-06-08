@@ -1,25 +1,47 @@
-version: "3"
+version: '3.8'
 services:
-    db:
-        container_name: mongodb
-        image: mongo
-        restart: always
-        ports: 
-            - 27017:27017
-        volumes:
-            - mongodb:/data/db
-        command: mongod --quiet --logpath /dev/null 
-    server:
-        build: ./server
-        container_name: server
-        ports:
-            - 8888:8888
-        volumes:
-            - ./server:/usr/src/app/server
-            - /usr/src/app/server/node_modules
-            - data-volume:/var/lib/shared
-        links:
-            - db
+  mongodb:
+    image: mongo:latest
+    restart: always
+    networks:
+      - mongodb
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongodb:/data/db
+    command: mongod --quiet --logpath /dev/null
+
+  # pgadmin:
+    # image: dpage/pgadmin4:7.0
+    # networks:
+      # - mongodb
+    # ports:
+      # - "8080:80"
+    # volumes:
+      # - pgadmin:/root/.pgadmin
+    # env_file:
+      # - ./server/docker.env
+
+  server:
+    build:
+      context: ./server
+      target: install-dependencies
+    command: npm run start:dev
+    networks:
+      - mongodb
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./server/src:/user/src/app/server/src
+    depends_on:
+      - mongodb
+    env_file:
+      - ./server/.env
+
+networks:
+  mongodb:
+    driver: bridge
+
 volumes:
-    mongodb:
-    data-volume:
+  mongodb:
+  pgadmin:
