@@ -28,7 +28,7 @@ jobs:
 
       - name: Run ESLint
         working-directory: ./mobile
-        run: docker run $IMAGE_TAG_MOBILE sh -c 'npm run lint'
+        run: docker run $IMAGE_TAG_MOBILE sh -c 'npm run lint:verify'
 
       - name: Run tests
         working-directory: ./mobile
