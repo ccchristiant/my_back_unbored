@@ -1,22 +1,26 @@
+######################
+# Server ignore file #
+######################
+
 # compiled output
-dist/
-node_modules/
+server/dist/
+server/node_modules/
 
 # Logs
-logs
-*.log
-npm-debug.log*
-pnpm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*
+server/logs
+server/*.log
+server/npm-debug.log*
+server/pnpm-debug.log*
+server/yarn-debug.log*
+server/yarn-error.log*
+server/lerna-debug.log*
 
 # OS
 .DS_Store
 
 # Tests
-coverage
-.nyc_output
+server/coverage
+server/.nyc_output
 
 # IDEs and editors
 /.idea
@@ -31,46 +35,92 @@ coverage
 /.vscode
 
 # Environment
-*.env
+server/*.env
+
+##########################
+# Web client ignore file #
+##########################
 
 # dependencies
-.pnp
-.pnp.js
+web/node_modules
+web/.pnp
+web/.pnp.js
+web/.yarn/install-state.gz
+
+# testing
+web/coverage
+
+# next.js
+web/.next/
+web/out/
 
 # production
-build
+web/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+web/npm-debug.log*
+web/yarn-debug.log*
+web/yarn-error.log*
+
+# local env files
+web/.env*.local
+
+# vercel
+web/.vercel
+
+# typescript
+web/*.tsbuildinfo
+web/next-env.d.ts
+
+#############################
+# Mobile client ignore file #
+#############################
+
+# OSX
+#
+.DS_Store
 
 # Xcode
 #
-build/
-*.pbxuser
-!default.pbxuser
-*.mode1v3
-!default.mode1v3
-*.mode2v3
-!default.mode2v3
-*.perspectivev3
-!default.perspectivev3
-xcuserdata
-*.xccheckout
-*.moved-aside
-DerivedData
-*.hmap
-*.ipa
-*.xcuserstate
-ios/.xcode.env.local
+mobile/build/
+mobile/*.pbxuser
+mobile/!default.pbxuser
+mobile/*.mode1v3
+mobile/!default.mode1v3
+mobile/*.mode2v3
+mobile/!default.mode2v3
+mobile/*.perspectivev3
+mobile/!default.perspectivev3
+mobile/xcuserdata
+mobile/*.xccheckout
+mobile/*.moved-aside
+mobile/DerivedData
+mobile/*.hmap
+mobile/*.ipa
+mobile/*.xcuserstate
+mobile/ios/.xcode.env.local
 
 # Android/IntelliJ
 #
-build/
-.idea
-.gradle
-local.properties
-*.iml
-*.hprof
-.cxx/
-*.keystore
-!debug.keystore
+mobile/build/
+mobile/.idea
+mobile/.gradle
+mobile/local.properties
+mobile/*.iml
+mobile/*.hprof
+mobile/.cxx/
+mobile/*.keystore
+mobile/!debug.keystore
+
+# node.js
+#
+mobile/node_modules/
+mobile/npm-debug.log
+mobile/yarn-error.log
 
 # fastlane
 #
@@ -85,11 +135,20 @@ local.properties
 **/fastlane/test_output
 
 # Bundle artifact
-*.jsbundle
+mobile/*.jsbundle
 
 # Ruby / CocoaPods
-/ios/Pods/
-/vendor/bundle/
+mobile/ios/Pods/
+mobile/vendor/bundle/
 
 # Temporary files created by Metro to check the health of the file watcher
-.metro-health-check*
+mobile/.metro-health-check*
+
+# testing
+mobile/coverage
+
+#########################
+#  Shared ignore file   #
+#########################
+
+**.env
