@@ -1,6 +1,6 @@
 # Installing dependencies:
 
-FROM node:18.16-alpine AS install-dependencies
+FROM node:20.9-alpine AS install-dependencies
 
 WORKDIR /user/src/app/server
 
@@ -14,7 +14,7 @@ COPY . .
 
 # Creating a build:
 
-FROM node:18.16-alpine AS create-build
+FROM node:20.9-alpine AS create-build
 
 WORKDIR /user/src/app/server
 
@@ -28,7 +28,7 @@ USER node
 
 # Running the application:
 
-FROM node:18.16-alpine AS run
+FROM node:20.9-alpine AS run
 
 RUN npm install -g npm@10.1.0
 
