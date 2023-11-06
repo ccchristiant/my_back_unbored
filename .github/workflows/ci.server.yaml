@@ -9,19 +9,8 @@ env:
   IMAGE_TAG_SERVER: server
 
 jobs:
-  build:
-    name: Server - Build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out the repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Build the Docker image
-        run: docker build -t $IMAGE_TAG_SERVER --target=create-build .
   format:
     name: Server - Format
-    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
@@ -34,7 +23,6 @@ jobs:
         run: docker run $IMAGE_TAG_SERVER sh -c 'npm run format:verify'
   lint:
     name: Server - Lint
-    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
@@ -47,7 +35,6 @@ jobs:
         run: docker run $IMAGE_TAG_SERVER sh -c 'npm run lint:verify'
   test_and_analyze:
     name: Server - Test and Analyze
-    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
