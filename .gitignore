@@ -1,26 +1,22 @@
-######################
-# Server ignore file #
-######################
-
 # compiled output
-server/dist/
-server/node_modules/
+/dist
+/node_modules
 
 # Logs
-server/logs
-server/*.log
-server/npm-debug.log*
-server/pnpm-debug.log*
-server/yarn-debug.log*
-server/yarn-error.log*
-server/lerna-debug.log*
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
 
 # OS
 .DS_Store
 
 # Tests
-server/coverage
-server/.nyc_output
+/coverage
+/.nyc_output
 
 # IDEs and editors
 /.idea
@@ -32,120 +28,11 @@ server/.nyc_output
 *.sublime-workspace
 
 # IDE - VSCode
-/.vscode
-
-# Environment
-server/*.env
-
-##########################
-# Web client ignore file #
-##########################
-
-# dependencies
-web/node_modules
-web/.pnp
-web/.pnp.js
-web/.yarn/install-state.gz
-
-# testing
-web/coverage
-
-# next.js
-web/.next/
-web/out/
-
-# production
-web/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
-web/npm-debug.log*
-web/yarn-debug.log*
-web/yarn-error.log*
-
-# local env files
-web/.env*.local
-
-# vercel
-web/.vercel
-
-# typescript
-web/*.tsbuildinfo
-web/next-env.d.ts
-
-#############################
-# Mobile client ignore file #
-#############################
-
-# OSX
-#
-.DS_Store
-
-# Xcode
-#
-mobile/build/
-mobile/*.pbxuser
-mobile/!default.pbxuser
-mobile/*.mode1v3
-mobile/!default.mode1v3
-mobile/*.mode2v3
-mobile/!default.mode2v3
-mobile/*.perspectivev3
-mobile/!default.perspectivev3
-mobile/xcuserdata
-mobile/*.xccheckout
-mobile/*.moved-aside
-mobile/DerivedData
-mobile/*.hmap
-mobile/*.ipa
-mobile/*.xcuserstate
-mobile/ios/.xcode.env.local
-
-# Android/IntelliJ
-#
-mobile/build/
-mobile/.idea
-mobile/.gradle
-mobile/local.properties
-mobile/*.iml
-mobile/*.hprof
-mobile/.cxx/
-mobile/*.keystore
-mobile/!debug.keystore
-
-# node.js
-#
-mobile/node_modules/
-mobile/npm-debug.log
-mobile/yarn-error.log
-
-# fastlane
-#
-# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
-# screenshots whenever they are needed.
-# For more information about the recommended setup visit:
-# https://docs.fastlane.tools/best-practices/source-control/
-
-**/fastlane/report.xml
-**/fastlane/Preview.html
-**/fastlane/screenshots
-**/fastlane/test_output
-
-# Bundle artifact
-mobile/*.jsbundle
-
-# Ruby / CocoaPods
-mobile/ios/Pods/
-mobile/vendor/bundle/
-
-# Temporary files created by Metro to check the health of the file watcher
-mobile/.metro-health-check*
-
-# testing
-mobile/coverage
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
 #########################
 #  Shared ignore file   #

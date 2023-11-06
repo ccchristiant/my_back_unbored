@@ -11,25 +11,28 @@ env:
   IMAGE_TAG_SERVER: server
 
 jobs:
-  ci_server:
+  build:
     name: Server - Run tests
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
         uses: actions/checkout@v3
-
+        with:
+          fetch-depth: 0
       - name: Build the Docker image
         working-directory: ./server
         run: docker build -t $IMAGE_TAG_SERVER --target=create-build .
-
       - name: Run Prettier
         working-directory: ./server
         run: docker run $IMAGE_TAG_SERVER sh -c 'npm run format:verify'
-
       - name: Run ESLint
         working-directory: ./server
         run: docker run $IMAGE_TAG_SERVER sh -c 'npm run lint:verify'
-
       - name: Run tests
         working-directory: ./server
-        run: docker run $IMAGE_TAG_SERVER sh -c 'npm run test'
+        run: docker run $IMAGE_TAG_SERVER sh -c 'npm run test:cov'
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

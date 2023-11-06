@@ -13,7 +13,7 @@ services:
 
   server:
     build:
-      context: ./server
+      context: .
       target: install-dependencies
     command: npm run start:dev
     networks:
@@ -21,25 +21,11 @@ services:
     ports:
       - '3000:3000'
     volumes:
-      - ./server/src:/user/src/app/server/src
+      - ./src:/user/src/app/server/src
     depends_on:
       - mongodb
     env_file:
       - ./server/.env
-
-  # web:
-  #   build:
-  #     context: ./web
-  #     target: install-dependencies
-  #   command: npm run start
-  #   ports:
-  #     - '4000:4000'
-  #   volumes:
-  #     - ./web/src:/user/src/app/web/src
-  #   depends_on:
-  #     - server
-  #   env_file:
-  #     - ./web/.env
 
 networks:
   mongodb:
