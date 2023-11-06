@@ -8,7 +8,7 @@ RUN npm install --ignore-scripts -g npm@10.2.3
 
 COPY package*.json ./
 
-RUN npm ci
+RUN npm ci --ignore-scripts
 
 COPY . .
 
