@@ -26,7 +26,7 @@ jobs:
       - name: Run tests
         run: docker run $IMAGE_TAG_SERVER sh -c 'npm run test:cov'
       - name: Check directory content and check workdir
-        run: docker run $IMAGE_TAG_SERVER sh -c 'ls -l && pwd'
+        run: docker run $IMAGE_TAG_SERVER sh -c 'ls -l && pwd && ls -l /user/src/app'
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
