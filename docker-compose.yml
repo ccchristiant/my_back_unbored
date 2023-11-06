@@ -22,7 +22,7 @@ services:
       - '3000:3000'
     volumes:
       - ./src:/user/src/app/server/src
-      - ./coverage:/user/src/app/server/coverage
+      # - ./coverage:/user/src/app/server/coverage
     depends_on:
       - mongodb
     env_file:
