@@ -24,8 +24,6 @@ COPY --from=install-dependencies /user/src/app/server ./
 
 RUN npm run build
 
-USER node
-
 # Running the application:
 
 FROM node:20.9-alpine AS run
