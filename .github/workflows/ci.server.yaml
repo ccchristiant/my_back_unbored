@@ -24,9 +24,9 @@ jobs:
       - name: Run ESLint
         run: docker run $IMAGE_TAG_SERVER sh -c 'npm run lint:verify'
       - name: Run tests
-        run: docker run $IMAGE_TAG_SERVER sh -c 'npm run test:cov'
+        run: docker run $IMAGE_TAG_SERVER sh -c 'npm run test:cov && ls -l && pwd'
       - name: Check directory content and check workdir
-        run: docker run $IMAGE_TAG_SERVER sh -c 'ls -l && pwd && ls -l /user/src/app'
+        run: docker run $IMAGE_TAG_SERVER sh -c 'ls -l && pwd'
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
